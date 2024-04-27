@@ -1,7 +1,15 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React, { useContext, useEffect } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
+import { passwordContext } from '../App'
 
 const Navbar = () => {
+  const [password , setPassword] = useContext(passwordContext)
+   
+const logoutFunc = () =>{
+  localStorage.removeItem("password")
+  setPassword("")
+}
+ 
   return (
     <>
       <nav className="navbar navbar-expand-lg fixed-top navbar-light bg-primary">
@@ -38,9 +46,10 @@ const Navbar = () => {
                 </Link>
               </li>
             </ul>
-            <Link to="/login">
-              <button className="navbar-text text-dark btn bg-white nav-text">Log in</button>
-            </Link>
+            {password ?<button onClick={logoutFunc} style={{height:'30px',border:'1px solid white'}} className=" navbar-text text-white btn nav-text d-flex align-items-center">Log out</button> :  <Link style={{textDecoration:"none"}} to="/login">
+              <button style={{height:'30px'}} className=" navbar-text text-dark btn bg-white nav-text d-flex align-items-center">Log in</button>
+            </Link>}
+             
           </div>
         </div>
       </nav>

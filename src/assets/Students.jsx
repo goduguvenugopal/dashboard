@@ -1,13 +1,21 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import '../App.css'
 import axios from 'axios'
+import { passwordContext } from '../App'
+import { useNavigate } from 'react-router-dom'
 
 
 const Students = () => {
   const [data, setData] = useState([])
+const [password , setPassword] = useContext(passwordContext)
+const navigate = useNavigate();
 
-
-  console.log(data._id)
+ useEffect(()=>{
+ 
+if(!password){
+  navigate("/login")
+}
+ },[password])
 
 
   //  get method of students 

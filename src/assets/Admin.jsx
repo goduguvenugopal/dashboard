@@ -1,8 +1,12 @@
-import React, { useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import '../App.css'
 import axios from 'axios'
-import { useSearchParams } from 'react-router-dom'
+import { passwordContext } from '../App'
+import { useNavigate } from 'react-router-dom'
+ 
 const Admin = () => {
+  const navigate = useNavigate()
+  const [password , setPassword] = useContext(passwordContext)
   const [studentId, setStudentId] = useState("")
   const [student, setStudent] = useState([])
   const [loader, setLoader] = useState(true)
@@ -111,6 +115,11 @@ const Admin = () => {
 
   }
 
+  useEffect(()=>{
+    if(!password){
+      navigate("/login")
+    }
+  },[password])
 
   return (
     <>

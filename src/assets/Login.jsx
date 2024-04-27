@@ -1,24 +1,35 @@
-import React, { useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import '../App.css'
-import axios from 'axios'
+import { passwordContext } from '../App'
+import { useNavigate } from 'react-router-dom'
 
 
 const Login = () => {
     const [password, setPassword] = useState("")
-
-console.log(password)
-    // post method 
-    const formFunc = async (e) => {
+    const [password1, setPassword1] = useContext(passwordContext)
+    const navigate = useNavigate();
+    // password verification function  
+    const formFunc = (e) => {
         e.preventDefault()
-        try {
-            await axios.post("https://students-server-884c.onrender.com/students/login", { password : password })
-
+        const pass = "venugopal"
+        if (pass === password) {
             alert("Logged in Successfully")
-        } catch (error) {
-            console.log(error)
-            alert("Please Try Again' Log in Failed")
+            localStorage.setItem("password", pass)
+            setPassword1(pass)
+        } else {
+            alert("Try Again You Have Entered Wrong Password")
         }
     }
+
+    useEffect(() => {
+        if (password1) {
+            navigate("/")
+        }
+    }, [password1])
+
+
+
+
 
     return (
         <div className='container d-flex justify-content-center align-items-center' style={{ width: "100vw", height: "100vh" }}>
