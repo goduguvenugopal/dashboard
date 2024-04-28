@@ -23,7 +23,10 @@ const Login = () => {
 
     useEffect(() => {
         if (password1) {
-            navigate("/")
+            setTimeout(() => {
+                navigate("/")
+            }, 1500);
+
         }
     }, [password1])
 

@@ -3,10 +3,10 @@ import '../App.css'
 import axios from 'axios'
 import { passwordContext } from '../App'
 import { useNavigate } from 'react-router-dom'
- 
+
 const Admin = () => {
   const navigate = useNavigate()
-  const [password , setPassword] = useContext(passwordContext)
+  const [password, setPassword] = useContext(passwordContext)
   const [studentId, setStudentId] = useState("")
   const [student, setStudent] = useState([])
   const [loader, setLoader] = useState(true)
@@ -48,7 +48,7 @@ const Admin = () => {
         totalAmount: ""
       });
       setToggle(false)
-      
+
     } catch (error) {
       setUpdateSpin(false)
       setLoader(true)
@@ -66,6 +66,7 @@ const Admin = () => {
       setStudent(response.data)
       setLoader(true)
       setToggle1(true)
+      setToggle(false)
     } catch (error) {
       setLoader(true)
       alert("Please Enter Correct student Enroll No' Student Does not Exist With This Enroll No. ")
@@ -115,11 +116,11 @@ const Admin = () => {
 
   }
 
-  useEffect(()=>{
-    if(!password){
+  useEffect(() => {
+    if (!password) {
       navigate("/login")
     }
-  },[password])
+  }, [password])
 
   return (
     <>
@@ -131,13 +132,13 @@ const Admin = () => {
             <hr />
 
             <label className='label'>Student Enrollment Number</label><br />
-            <input name='enrollNum' value={enrollNum.trim()} placeholder='Enrollment No' onChange={(e) => setEnrollNum(e.target.value)} required type='text' className='input-box' /><br />
+            <input style={{ width: "200px", marginRight: "0.4rem", height: "37px" }} name='enrollNum' value={enrollNum.trim()} placeholder='Enrollment No' onChange={(e) => setEnrollNum(e.target.value)} required type='text' className='input-box' />
 
-            <button type='submit' className='mt-2 text-white btn bg-primary'>Submit</button>
+            <button style={{ marginBottom: "0.4rem" }} type='submit' className=' text-white btn bg-primary'>Submit</button>
           </form>
         </div>
         <div className='text-center mt-3'>
-          <h5 className='mt-4' style={{ textDecoration: "underline" }}>Student Details</h5>
+          <h5 className='mt-4 ' style={{ textDecoration: "underline" }}>Student Details</h5>
           <div className=''>
             {loader ? <div className='mt-3 table-card'>
               <table className="table">
@@ -162,26 +163,26 @@ const Admin = () => {
                     <td>{student.Class}</td>
                     <td>{student.studentId}</td>
                     <td>{student.address}</td>
-                    <td><div className='d-flex align-items-center'><span class="material-symbols-outlined rupee">
+                    <td><div className='d-flex align-items-center'><span className="material-symbols-outlined rupee">
                       currency_rupee
                     </span>{student.paid}</div>
 
                     </td>
-                    <td><div className='d-flex align-items-center'><span class="material-symbols-outlined rupee">
+                    <td><div className='d-flex align-items-center'><span className="material-symbols-outlined rupee">
                       currency_rupee
                     </span>{student.totalAmount - student.paid}</div>
                     </td>
                     <td>
-                      <div className='d-flex align-items-center'> <span class="material-symbols-outlined rupee">
+                      <div className='d-flex align-items-center'> <span className="material-symbols-outlined rupee">
                         currency_rupee
                       </span>{student.totalAmount}
                       </div>
                     </td>
                     <td style={{ width: '300px' }}>
                       <div style={{ width: '300px', height: "50px" }} className='pt-1 d-flex  justify-content-around align-items-center '>
-                        <button onClick={()=> setToggle(true)} class={toggle1 ? "btn bg-success text-white" : "d-none" }>
+                        <a href='#update'> <button onClick={() => setToggle(true)} class={toggle1 ? "btn bg-success text-white" : "d-none"}>
                           Update
-                        </button>
+                        </button></a>
                         {delSpinner ? <button className="btn btn-danger" type="button" >
                           <span style={{ marginRight: "0.4rem" }}
                             className="spinner-border spinner-border-sm"
@@ -189,7 +190,7 @@ const Admin = () => {
                             aria-hidden="true"
                           />
                           Deleting...
-                        </button> : <button onClick={() => delFunc(student._id)} class= {toggle1 ? "  btn bg-danger text-white m-2" : "d-none"}>
+                        </button> : <button onClick={() => delFunc(student._id)} class={toggle1 ? "  btn bg-danger text-white m-2" : "d-none"}>
                           Delete
                         </button>}
 
@@ -204,10 +205,10 @@ const Admin = () => {
               <div className=" spinner-border text-primary" role="status">
                 <span className="visually-hidden">Loading...</span>
               </div>
-              <h5 style={{ marginLeft: "0.3rem" }} className='mt-1'>Fetching Student Details...</h5>
+              <h5 style={{ marginLeft: "0.3rem", marginTop: "0.4rem" }}>Fetching Student Details...</h5>
             </div>
             }
-          </div>
+          </div><hr />
 
           <div className='mt-4 pb-3 d-flex align-items-center justify-content-center'>
             <form className='text-start' onSubmit={putFunc}>
@@ -216,7 +217,10 @@ const Admin = () => {
               <label className='label'>Student Enrollment Number</label><br />
               <input name='studentId' value={studentId.trim()} onChange={(e) => setStudentId(e.target.value)} placeholder='Enrollment No' required type='text' className='input-box' /><br />
               <label className='label'>Due Amount</label><br />
-              <input required type='number' value={pay} name='pay' onChange={(e) => setpay(e.target.value)} placeholder='Enter Due Amount' className='input-box' /><br />
+              <input style={{ paddingLeft: "21px" }} required type='number' value={pay} name='pay' onChange={(e) => setpay(e.target.value)} placeholder='Enter Due Amount' className='input-box' />
+              <span id="rupi" className="material-symbols-outlined">
+                currency_rupee
+              </span>
               <h6 style={{ fontSize: "14px" }} className='mt-2 text-danger'><strong className='text-dark fs-6'>Note : </strong>Add Previous Paid Amount While Paying Due Fee</h6>
               <hr className='mb-3' />
               {paySpin ? <button className="btn btn-primary" type="button" >
@@ -231,8 +235,8 @@ const Admin = () => {
             </form>
 
           </div><hr />
-          <div className='mb-3 d-flex justify-content-center text-center'>
-            {toggle && <div className='form-card py-4'>
+          <div id='update' className='mb-3 d-flex justify-content-center text-center'>
+            {!toggle && <div className='form-card py-4'>
 
               <form className='text-start' onSubmit={(e) => {
                 formFunc(student._id)
@@ -252,11 +256,22 @@ const Admin = () => {
                 <input onChange={formHandle} name='address'
                   value={data.address} required type='text' placeholder='Enter Address' className='input-box' /><br />
                 <label className='label'>Paid</label><br />
-                <input onChange={formHandle} name='paid'
-                  value={data.paid} required type='number' placeholder='Enter Paid Fee' className='input-box' /><br />
+                <input style={{ paddingLeft: "21px" }} onChange={formHandle} name='paid'
+                  value={data.paid} required type='number' placeholder='Enter Paid Fee' className='input-box' />
+                <span id="rupi1" className="material-symbols-outlined">
+                  currency_rupee
+                </span><br />
+
                 <label className='label'>Fee</label><br />
-                <input onChange={formHandle} required name='totalAmount'
-                  value={data.totalAmount} type='number' placeholder='Enter Fee' className='input-box' /><br /><hr />
+                <input style={{ paddingLeft: "21px" }} onChange={formHandle} required name='totalAmount'
+                  value={data.totalAmount} type='number' placeholder='Enter Fee' className='input-box' />
+                <span id="rupi2" className="material-symbols-outlined">
+                  currency_rupee
+                </span>
+                <hr />
+
+
+
                 {updateSpin ? <button className="btn btn-primary" type="button" disabled="">
                   <span style={{ marginRight: "0.4rem" }}
                     className="spinner-border spinner-border-sm"

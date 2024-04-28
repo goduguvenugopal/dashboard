@@ -7,15 +7,15 @@ import { useNavigate } from 'react-router-dom'
 
 const Students = () => {
   const [data, setData] = useState([])
-const [password , setPassword] = useContext(passwordContext)
-const navigate = useNavigate();
+  const [password, setPassword] = useContext(passwordContext)
+  const navigate = useNavigate();
 
- useEffect(()=>{
- 
-if(!password){
-  navigate("/login")
-}
- },[password])
+  useEffect(() => {
+
+    if (!password) {
+      navigate("/login")
+    }
+  }, [password])
 
 
   //  get method of students 
@@ -65,16 +65,16 @@ if(!password){
                   <td>{item.Class}</td>
                   <td>{item.studentId}</td>
                   <td>{item.address}</td>
-                  <td><div className='d-flex align-items-center'><span class="material-symbols-outlined rupee">
+                  <td><div className='d-flex align-items-center'><span className="material-symbols-outlined rupee">
                     currency_rupee
                   </span>{item.paid}</div>
 
                   </td>
-                  <td><div className='d-flex align-items-center'><span class="material-symbols-outlined rupee">
+                  <td><div className='d-flex align-items-center'><span className="material-symbols-outlined rupee">
                     currency_rupee
                   </span>{item.totalAmount - item.paid}</div>
                   </td>
-                  <td><div className='d-flex align-items-center'> <span class="material-symbols-outlined rupee">
+                  <td><div className='d-flex align-items-center'> <span className="material-symbols-outlined rupee">
                     currency_rupee
                   </span>{item.totalAmount}</div>
                   </td>
@@ -87,7 +87,7 @@ if(!password){
           <div className="spinner-border text-primary" role="status">
             <span className="visually-hidden">Loading...</span>
           </div>
-          <h5 style={{ marginLeft: "0.3rem" }} className='mt-1'>Loading...</h5>
+          <h5 style={{ marginLeft: "0.3rem", marginTop: "0.3rem" }}>Loading...</h5>
         </div>
         }
 

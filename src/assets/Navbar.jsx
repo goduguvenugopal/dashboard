@@ -3,13 +3,13 @@ import { Link, useNavigate } from 'react-router-dom'
 import { passwordContext } from '../App'
 
 const Navbar = () => {
-  const [password , setPassword] = useContext(passwordContext)
-   
-const logoutFunc = () =>{
-  localStorage.removeItem("password")
-  setPassword("")
-}
- 
+  const [password, setPassword] = useContext(passwordContext)
+
+  const logoutFunc = () => {
+    localStorage.removeItem("password")
+    setPassword("")
+  }
+
   return (
     <>
       <nav className="navbar navbar-expand-lg fixed-top navbar-light bg-primary">
@@ -29,7 +29,7 @@ const logoutFunc = () =>{
             <span className="navbar-toggler-icon" />
           </button>
           <div className="collapse navbar-collapse" id="navbarText">
-            <ul className="navbar-nav m-auto mb-2 mb-lg-0">
+            {password && <ul className="navbar-nav m-auto mb-2 mb-lg-0">
               <li className="nav-item">
                 <Link to="/" className="nav-link active text-white nav-text" aria-current="page" href="#">
                   Enroll
@@ -45,11 +45,9 @@ const logoutFunc = () =>{
                   Admin
                 </Link>
               </li>
-            </ul>
-            {password ?<button onClick={logoutFunc} style={{height:'30px',border:'1px solid white'}} className=" navbar-text text-white btn nav-text d-flex align-items-center">Log out</button> :  <Link style={{textDecoration:"none"}} to="/login">
-              <button style={{height:'30px'}} className=" navbar-text text-dark btn bg-white nav-text d-flex align-items-center">Log in</button>
-            </Link>}
-             
+            </ul>}
+            {password && <button onClick={logoutFunc} style={{ height: '30px', border: '1px solid white' }} className=" navbar-text text-white btn nav-text d-flex align-items-center">Log out</button>}
+
           </div>
         </div>
       </nav>

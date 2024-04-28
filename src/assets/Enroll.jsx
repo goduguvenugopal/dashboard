@@ -1,9 +1,13 @@
-import React, { useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import '../App.css'
 import axios from 'axios'
+import { passwordContext } from '../App'
+import { useNavigate } from 'react-router-dom'
 
 
 const Enroll = () => {
+  const [password , setPassword] = useContext(passwordContext)
+  const navigate = useNavigate()
   const [data, setData] = useState({
     name: "",
     studentId: "",
@@ -49,7 +53,11 @@ const Enroll = () => {
   }
 
 
-
+useEffect(()=>{
+if(!password){
+  navigate("/login")
+}
+})
 
   return (
     <>
@@ -70,11 +78,19 @@ const Enroll = () => {
             <input onChange={formHandle} name='address'
               value={data.address} required type='text' placeholder='Enter Address' className='input-box' /><br />
             <label className='label'>Paid</label><br />
-            <input onChange={formHandle} name='paid'
-              value={data.paid} required type='number' placeholder='Enter Paid Fee' className='input-box' /><br />
+            <input style={{paddingLeft:"21px"}} onChange={formHandle} name='paid'
+              value={data.paid} required type='number' placeholder='Enter Paid Fee' className='input-box' />
+            <span id="rupi" className="material-symbols-outlined">
+                currency_rupee
+              </span><br/>
             <label className='label'>Fee</label><br />
-            <input onChange={formHandle} required name='totalAmount'
-              value={data.totalAmount} type='number' placeholder='Enter Fee' className='input-box' /><br /><hr />
+            <input  style={{paddingLeft:"21px"}} onChange={formHandle} required name='totalAmount'
+              value={data.totalAmount} type='number' placeholder='Enter Fee' className='input-box' />
+               <span id="rupi1" className="material-symbols-outlined">
+                currency_rupee
+              </span>
+              <hr />
+            
             {spinner ? <button className="btn btn-primary" type="button" disabled="">
               <span style={{ marginRight: "0.4rem" }}
                 className="spinner-border spinner-border-sm"
