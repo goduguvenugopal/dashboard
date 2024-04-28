@@ -134,7 +134,7 @@ const Admin = () => {
             <label className='label'>Student Enrollment Number</label><br />
             <input style={{ width: "200px", marginRight: "0.4rem", height: "37px" }} name='enrollNum' value={enrollNum.trim()} placeholder='Enrollment No' onChange={(e) => setEnrollNum(e.target.value)} required type='text' className='input-box' />
 
-            <button style={{ marginBottom: "0.4rem" }} type='submit' className=' text-white btn bg-primary'>Submit</button>
+            <button style={{ marginBottom: "0.3rem" }} type='submit' className=' text-white btn bg-primary'>Submit</button>
           </form>
         </div>
         <div className='text-center mt-3'>
@@ -236,7 +236,7 @@ const Admin = () => {
 
           </div><hr />
           <div id='update' className='mb-3 d-flex justify-content-center text-center'>
-            {!toggle && <div className='form-card py-4'>
+            {toggle && <div className='form-card py-4'>
 
               <form className='text-start' onSubmit={(e) => {
                 formFunc(student._id)
