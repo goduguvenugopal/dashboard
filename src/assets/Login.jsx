@@ -2,10 +2,10 @@ import React, { useContext, useEffect, useState } from 'react'
 import '../App.css'
 import { passwordContext } from '../App'
 import { useNavigate } from 'react-router-dom'
-import { Pass } from '../../pass' 
+ 
 
 const Login = () => {
-    const [pass, setPass] = useState(Pass)
+    
     const [password, setPassword] = useState("")
     const [password1, setPassword1] = useContext(passwordContext)
     const navigate = useNavigate();
@@ -14,7 +14,7 @@ const Login = () => {
     // password verification function  
     const formFunc = (e) => {
         e.preventDefault()
-         
+         const pass = "sp2024"
         if (pass === password) {
             alert("Logged in Successfully")
             localStorage.setItem("password", pass)
