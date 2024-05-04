@@ -33,17 +33,17 @@ const Students = () => {
     fetchData();
   }, [])
 
+ 
 
   return (
     <>
-      <div className='container students-card mt-5 pt-4'>
-        <div className='d-flex justify-content-between mt-2 py-3'>
-          <h4 className=''>All Students details</h4>
-          <h4 className=''></h4>
+     <div className=' students-card d-flex justify-content-evenly flex-wrap mt-2 py-3'>
+          <h4 className='all-text'>All Students details</h4>
+          <h4 className='all-text'>Total Students : {data.length}</h4>
         </div>
-
-
-        {data.length ? <div className='table-card'>
+      <div className='container mt-5 ' >
+      
+        {data.length ? <div className='table-card' style={{paddingTop:"6rem"}}>
           <table className="table">
             <thead>
               <tr className='bg-primary text-white'>
@@ -83,7 +83,7 @@ const Students = () => {
 
             </tbody>
           </table>
-        </div> : <div style={{ height: "70vh" }} className="d-flex justify-content-center align-items-center">
+        </div> : <div style={{ height: "100vh" }} className="d-flex justify-content-center align-items-center">
           <div className="spinner-border text-primary" role="status">
             <span className="visually-hidden">Loading...</span>
           </div>

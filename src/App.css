@@ -105,3 +105,16 @@ td {
   padding: 15px;
   border-radius: 10px;
 }
+
+.students-card{
+  position: fixed;
+  background-color: rgb(23, 201, 85);
+ height: 70px;
+  width: 100vw;
+   
+}
+
+.all-text{
+  color: white;
+  padding-top: 0.6rem;
+}
