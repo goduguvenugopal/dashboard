@@ -33,13 +33,13 @@ const Students = () => {
     fetchData();
   }, [])
 
- 
+  
 
   return (
     <>
      <div className=' students-card d-flex justify-content-evenly  flex-wrap mt-2 pt-3 pb-1'>
           <h4 className='all-text'>All Students details</h4>
-          <h4 className='all-text'>Total Students : {data.length}</h4>
+          <h4 className='all-text'>Total Students : <b style={{textDecoration:"underline"}}>{data.length}</b>  </h4>
         </div>
       <div className='container mt-5 ' >
       
