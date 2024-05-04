@@ -37,7 +37,7 @@ const Students = () => {
 
   return (
     <>
-     <div className=' students-card d-flex justify-content-evenly  flex-wrap mt-2 pt-3 pb-2'>
+     <div className=' students-card d-flex justify-content-evenly  flex-wrap mt-2 pt-3 pb-1'>
           <h4 className='all-text'>All Students details</h4>
           <h4 className='all-text'>Total Students : {data.length}</h4>
         </div>
