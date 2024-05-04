@@ -37,13 +37,13 @@ const Students = () => {
 
   return (
     <>
-     <div className=' students-card d-flex justify-content-evenly flex-wrap mt-2 py-3'>
+     <div className=' students-card d-flex justify-content-evenly  flex-wrap mt-2 pt-3 pb-2'>
           <h4 className='all-text'>All Students details</h4>
           <h4 className='all-text'>Total Students : {data.length}</h4>
         </div>
       <div className='container mt-5 ' >
       
-        {data.length ? <div className='table-card' style={{paddingTop:"6rem"}}>
+        {data.length ? <div className='table-card' style={{paddingTop:"5rem"}}>
           <table className="table">
             <thead>
               <tr className='bg-primary text-white'>

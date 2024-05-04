@@ -44,6 +44,10 @@
   .enroll-main-card {
     padding-top: 5rem;
   }
+  .all-text{
+    font-size: 18px !important;  
+    
+  }
 }
 
 @media only screen and (min-width: 768px) {
@@ -109,12 +113,13 @@ td {
 .students-card{
   position: fixed;
   background-color: rgb(23, 201, 85);
- height: 70px;
+ padding-bottom: 0;
   width: 100vw;
    
 }
 
 .all-text{
   color: white;
-  padding-top: 0.6rem;
+   
+  font-size: 20px;
 }
