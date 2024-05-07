@@ -69,7 +69,7 @@ const Admin = () => {
       setToggle(false)
     } catch (error) {
       setLoader(true)
-      alert("Please Enter Correct student Enroll No' Student Does not Exist With This Enroll No. ")
+      alert("Please Try Again or Enter Correct student Enroll No' Student Does not Exist With This Enroll No. ")
       console.log(error)
     }
   }
@@ -144,11 +144,12 @@ const Admin = () => {
               <table className="table">
                 <thead>
                   <tr className='bg-primary text-white'>
-
+                  <th scope="col">JoiningDate</th>
                     <th scope="col">Student</th>
                     <th scope="col">Class</th>
                     <th scope="col">EnrollNo</th>
                     <th scope="col">Address</th>
+                    <th scope="col">LastPaidDate</th>
                     <th scope="col">Paid</th>
                     <th scope="col">Due</th>
                     <th scope="col">TotalFee</th>
@@ -158,11 +159,14 @@ const Admin = () => {
                 <tbody>
 
                   <tr key={student._id} >
-
+                  <td >{student.joiningDate}</td>
                     <td style={{ textTransform: "capitalize" }}>{student.name}</td>
+                    
                     <td>{student.Class}</td>
                     <td>{student.studentId}</td>
                     <td>{student.address}</td>
+                    
+                    <td>{student.lastPaymentDate}</td>
                     <td><div className='d-flex align-items-center'><span className="material-symbols-outlined rupee">
                       currency_rupee
                     </span>{student.paid}</div>

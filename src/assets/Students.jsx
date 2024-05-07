@@ -48,6 +48,7 @@ const Students = () => {
             <thead>
               <tr className='bg-primary text-white'>
                 <th scope="col" >Sl.No</th>
+                <th scope="col">JoiningDate</th>
                 <th scope="col">Student</th>
                 <th scope="col">Class</th>
                 <th scope="col">EnrollNo</th>
@@ -61,6 +62,7 @@ const Students = () => {
               {data.map((item, index) => (
                 <tr key={item._id} >
                   <th scope="row">{index + 1}</th>
+                  <td >{item.joiningDate}</td>
                   <td style={{ textTransform: "capitalize" }}>{item.name}</td>
                   <td>{item.Class}</td>
                   <td>{item.studentId}</td>

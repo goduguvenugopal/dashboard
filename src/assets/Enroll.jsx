@@ -14,7 +14,8 @@ const Enroll = () => {
     Class: "",
     address: "",
     paid: "",
-    totalAmount: ""
+    totalAmount: "",
+    joiningDate : ""
 
   })
 
@@ -43,7 +44,8 @@ const Enroll = () => {
         Class: "",
         address: "",
         paid: "",
-        totalAmount: ""
+        totalAmount: "",
+        joiningDate : ""
       });
       setSpinner(false)
     } catch (error) {
@@ -88,7 +90,11 @@ if(!password){
               value={data.totalAmount} type='number' placeholder='Enter Fee' className='input-box' />
                <span id="rupi1" className="material-symbols-outlined">
                 currency_rupee
-              </span>
+              </span><br/>
+              <label className='label'>Joining Date</label><br />
+            <input onChange={formHandle} required name='joiningDate'
+              value={data.joiningDate} type='date' className='input-box' /><br />
+           
               <hr />
             
             {spinner ? <button className="btn btn-primary" type="button" disabled="">
