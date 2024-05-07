@@ -17,9 +17,10 @@ const Students = () => {
     }
   }, [password])
 
-
+  
   //  get method of students 
   useEffect(() => {
+
     const fetchData = async () => {
       try {
         const response = await axios.get("https://students-server-884c.onrender.com/students/get-students");
@@ -29,21 +30,24 @@ const Students = () => {
         alert("Please Try Again: Server Is Not Responding");
       }
     };
-
+     
+      
+  
     fetchData();
   }, [])
 
-  
+
+
 
   return (
     <>
-     <div className=' students-card d-flex justify-content-evenly  flex-wrap mt-2 pt-3 pb-1'>
-          <h4 className='all-text'>All Students details</h4>
-          <h4 className='all-text'>Total Students : <b style={{textDecoration:"underline"}}>{data.length}</b>  </h4>
-        </div>
+      <div className=' students-card d-flex justify-content-evenly  flex-wrap mt-2 pt-3 pb-1'>
+        <h4 className='all-text'>All Students details</h4>
+        <h4 className='all-text'>Total Students : <b style={{ textDecoration: "underline" }}>{data.length}</b>  </h4>
+      </div>
       <div className='container mt-5 ' >
-      
-        {data.length ? <div className='table-card' style={{paddingTop:"5rem"}}>
+
+        {data.length ? <div className='table-card' style={{ paddingTop: "5rem" }}>
           <table className="table">
             <thead>
               <tr className='bg-primary text-white'>
