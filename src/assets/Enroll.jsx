@@ -50,7 +50,7 @@ const Enroll = () => {
       setSpinner(false)
     } catch (error) {
       setSpinner(false)
-      alert("This Enrollment No Already exists with other student details ")
+      alert("Please Try again Later or This Enrollment No Already exists with other student details ")
     }
   }
 
