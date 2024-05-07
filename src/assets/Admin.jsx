@@ -221,7 +221,6 @@ const Admin = () => {
               <span id="rupi" className="material-symbols-outlined">
                 currency_rupee
               </span>
-              <h6 style={{ fontSize: "14px" }} className='mt-2 text-danger'><strong className='text-dark fs-6'>Note : </strong>Add Previous Paid Amount While Paying Due Fee</h6>
               <hr className='mb-3' />
               {paySpin ? <button className="btn btn-primary" type="button" >
                 <span style={{ marginRight: "0.4rem" }}
