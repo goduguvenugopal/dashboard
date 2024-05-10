@@ -86,13 +86,13 @@ if(!password){
             
             
             <div className=''> 
-            <label className='label'>Paid</label><br />
+            <label className='label'>Advance Fee</label><br />
             <input style={{paddingLeft:"21px"}} onChange={formHandle} name='paid'
               value={data.paid} required type='number' placeholder='Enter Paid Fee' className='input-box' />
             <span id="rupi" className="material-symbols-outlined">
                 currency_rupee
               </span><br/>
-            <label className='label'>Fee</label><br />
+            <label className='label'>Total Fee</label><br />
             <input  style={{paddingLeft:"21px"}} onChange={formHandle} required name='totalAmount'
               value={data.totalAmount} type='number' placeholder='Enter Fee' className='input-box' />
                <span id="rupi1" className="material-symbols-outlined">
