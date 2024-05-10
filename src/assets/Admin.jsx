@@ -239,7 +239,7 @@ const Admin = () => {
 
           </div><hr />
           <div id='update' className='mb-3 d-flex justify-content-center text-center'>
-            {!toggle && <div className='form-card py-4'>
+            {toggle && <div className='form-card py-4'>
             <h4 className=''>Update Student Details All</h4><hr />
               <form id='form-response' className='text-start' onSubmit={(e) => {
                 formFunc(student._id)
