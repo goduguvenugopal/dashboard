@@ -88,7 +88,7 @@ if(!password){
             <div className=''> 
             <label className='label'>Advance Fee</label><br />
             <input style={{paddingLeft:"21px"}} onChange={formHandle} name='paid'
-              value={data.paid} required type='number' placeholder='Enter Paid Fee' className='input-box' />
+              value={data.paid} required type='number' placeholder='Enter Advance Fee' className='input-box' />
             <span id="rupi" className="material-symbols-outlined">
                 currency_rupee
               </span><br/>
