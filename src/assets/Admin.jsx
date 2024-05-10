@@ -240,12 +240,13 @@ const Admin = () => {
           </div><hr />
           <div id='update' className='mb-3 d-flex justify-content-center text-center'>
             {toggle && <div className='form-card py-4'>
-
-              <form className='text-start' onSubmit={(e) => {
+            <h4 className=''>Update Student Details All</h4><hr />
+              <form id='form-response' className='text-start' onSubmit={(e) => {
                 formFunc(student._id)
                 e.preventDefault()
               }}>
-                <h4 className=''>Update Student Details All</h4><hr />
+                
+               <div  className='form-sub-card'> 
                 <label className='label'>Student Name</label><br />
                 <input placeholder='Student Name' onChange={formHandle} required type='text' name='name'
                   value={data.name} className='input-box' /><br />
@@ -255,6 +256,8 @@ const Admin = () => {
                 <label className='label'>Class</label><br />
                 <input onChange={formHandle} required name='Class'
                   value={data.Class} type='text' placeholder='Enter Class' className='input-box' /><br />
+                  </div>
+                  <div className=''> 
                 <label className='label'>Address</label><br />
                 <input onChange={formHandle} name='address'
                   value={data.address} required type='text' placeholder='Enter Address' className='input-box' /><br />
@@ -284,7 +287,7 @@ const Admin = () => {
                   Updating...
                 </button>
                   : <button type='submit' className='text-white btn bg-primary'>Update</button>}
-
+</div>
               </form>
             </div>}
 

@@ -64,9 +64,12 @@ if(!password){
   return (
     <>
       <div className='container enroll-main-card'>
-        <div className='form-card py-4'>
-          <form className='' onSubmit={formFunc}>
-            <h4 className=''>Enroll Student Details</h4><hr />
+        <div className='form-card py-4 container'>
+        <h4 className='text-center'>Enroll Student Details</h4><hr />
+          <form id='form-response' onSubmit={formFunc}>
+         
+            <div className='form-sub-card'> 
+            
             <label className='label'>Student Name</label><br />
             <input placeholder='Student Name' onChange={formHandle} required type='text' name='name'
               value={data.name} className='input-box' /><br />
@@ -79,6 +82,10 @@ if(!password){
             <label className='label'>Address</label><br />
             <input onChange={formHandle} name='address'
               value={data.address} required type='text' placeholder='Enter Address' className='input-box' /><br />
+               </div>
+            
+            
+            <div className=''> 
             <label className='label'>Paid</label><br />
             <input style={{paddingLeft:"21px"}} onChange={formHandle} name='paid'
               value={data.paid} required type='number' placeholder='Enter Paid Fee' className='input-box' />
@@ -106,6 +113,7 @@ if(!password){
               Submitting...
             </button>
               : <button type='submit' className='text-white btn bg-primary'>Submit</button>}
+              </div>
 
           </form>
         </div>
