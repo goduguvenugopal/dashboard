@@ -3,7 +3,7 @@ import '../App.css'
 import axios from 'axios'
 import { passwordContext } from '../App'
 import { useNavigate } from 'react-router-dom'
-import { api5 } from '../api.js'
+import { api5 } from '../api'
 
 const Students = () => {
   const [data, setData] = useState([])
