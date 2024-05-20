@@ -3,7 +3,7 @@ import '../App.css'
 import { passwordContext } from '../App'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
-import { api } from "./api"
+import { api } from "./api.js"
 
 const Login = () => {
 

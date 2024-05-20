@@ -3,7 +3,7 @@ import '../App.css'
 import axios from 'axios'
 import { passwordContext } from '../App'
 import { useNavigate } from 'react-router-dom'
-import { api1, api2, api3, api4 } from './api'
+import { api1, api2, api3, api4 } from './api.js'
 
 
 const Admin = () => {

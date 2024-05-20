@@ -3,7 +3,7 @@ import '../App.css'
 import axios from 'axios'
 import { passwordContext } from '../App'
 import { useNavigate } from 'react-router-dom'
-
+import { api5 } from './api.js'
 
 const Students = () => {
   const [data, setData] = useState([])
@@ -23,7 +23,7 @@ const Students = () => {
 
     const fetchData = async () => {
       try {
-        const response = await axios.get("https://students-server-884c.onrender.com/students/get-students");
+        const response = await axios.get(`${api5}`);
         setData(response.data);
       } catch (error) {
         console.log(error);
