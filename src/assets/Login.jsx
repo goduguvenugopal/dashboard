@@ -2,34 +2,40 @@ import React, { useContext, useEffect, useState } from 'react'
 import '../App.css'
 import { passwordContext } from '../App'
 import { useNavigate } from 'react-router-dom'
- 
+import axios from 'axios'
+
 
 const Login = () => {
-    
+
     const [password, setPassword] = useState("")
     const [password1, setPassword1] = useContext(passwordContext)
     const navigate = useNavigate();
-    
+
 
     // password verification function  
-    const formFunc = (e) => {
+    const formFunc = async (e) => {
         e.preventDefault()
-         const pass = "sp2024"
-        if (pass === password) {
-            alert("Logged in Successfully")
-            localStorage.setItem("password", pass)
-            setPassword1(pass)
-        } else {
+
+        try {
+            const response = await axios.post("https://students-server-884c.onrender.com/students/login", { password })
+
+            if (response.data.ok) {
+                alert("Logged in Successfully")
+                const pass = "hello"
+                localStorage.setItem("password", pass)
+                setPassword1(pass)
+            }
+        }
+        catch (error) {
+            console.log(error)
             alert("Try Again You Have Entered Wrong Password")
         }
     }
 
     useEffect(() => {
         if (password1) {
-            setTimeout(() => {
-                navigate("/")
-            }, 1500);
 
+            navigate("/")
         }
     }, [password1])
 
