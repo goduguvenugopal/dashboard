@@ -3,7 +3,7 @@ import '../App.css'
 import { passwordContext } from '../App'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
-import { api } from "../api"
+ 
 
 const Login = () => {
 
@@ -19,7 +19,7 @@ const Login = () => {
         setSpinner(true)
 
         try {
-            const response = await axios.get(`${api}`)
+            const response = await axios.get("https://students-server-884c.onrender.com/students/login")
 
             if (response.data === password) {
                 setSpinner(false)
