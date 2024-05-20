@@ -3,6 +3,8 @@ import '../App.css'
 import axios from 'axios'
 import { passwordContext } from '../App'
 import { useNavigate } from 'react-router-dom'
+import { api1, api2, api3, api4 } from './api'
+
 
 const Admin = () => {
   const navigate = useNavigate()
@@ -36,7 +38,7 @@ const Admin = () => {
   const formFunc = async (id) => {
     setUpdateSpin(true)
     try {
-      await axios.put(`https://students-server-884c.onrender.com/students/update-all/${id}`, data)
+      await axios.put(` ${api1} / ${id}`, data)
       alert("Student Details Has Updated Successfully ")
       setUpdateSpin(false)
       setData({
@@ -62,7 +64,7 @@ const Admin = () => {
     event.preventDefault()
     setLoader(false)
     try {
-      const response = await axios.post("https://students-server-884c.onrender.com/students/find-student", { studentId: enrollNum })
+      const response = await axios.post(`${api2}`, { studentId: enrollNum })
       setStudent(response.data)
       setLoader(true)
       setToggle1(true)
@@ -82,7 +84,7 @@ const Admin = () => {
     if (confirm("Student Will be deleted Permanently, 'Are you Sure.' ")) {
       setDelSpinner(true)
       try {
-        await axios.delete(`https://students-server-884c.onrender.com/students/del-students/${itemId}`)
+        await axios.delete(` ${api3}/${itemId}`)
         alert("Student Has Deletd successfully")
         setStudent([])
         setToggle1(false)
@@ -103,7 +105,7 @@ const Admin = () => {
     e.preventDefault()
     setPaySpin(true)
     try {
-      await axios.put("https://students-server-884c.onrender.com/students/update-one", { studentId, pay })
+      await axios.put(`${api4}`, { studentId, pay })
       alert("Payment Has Done Successfully")
       setStudentId("")
       setpay("")
@@ -144,7 +146,7 @@ const Admin = () => {
               <table className="table">
                 <thead>
                   <tr className='bg-primary text-white'>
-                  <th scope="col">JoiningDate</th>
+                    <th scope="col">JoiningDate</th>
                     <th scope="col">Student</th>
                     <th scope="col">Class</th>
                     <th scope="col">EnrollNo</th>
@@ -159,13 +161,13 @@ const Admin = () => {
                 <tbody>
 
                   <tr key={student._id} >
-                  <td >{student.joiningDate}</td>
+                    <td >{student.joiningDate}</td>
                     <td style={{ textTransform: "capitalize" }}>{student.name}</td>
-                    
+
                     <td>{student.Class}</td>
                     <td>{student.studentId}</td>
                     <td>{student.address}</td>
-                    
+
                     <td>{student.lastPaymentDate}</td>
                     <td><div className='d-flex align-items-center'><span className="material-symbols-outlined rupee">
                       currency_rupee
@@ -240,57 +242,57 @@ const Admin = () => {
           </div><hr />
           <div id='update' className='mb-3 d-flex justify-content-center text-center'>
             {toggle && <div className='form-card py-4'>
-            <h4 className=''>Update Student Details All</h4><hr />
+              <h4 className=''>Update Student Details All</h4><hr />
               <form id='form-response' className='text-start' onSubmit={(e) => {
                 formFunc(student._id)
                 e.preventDefault()
               }}>
-                
-               <div  className='form-sub-card'> 
-               <label className='label'>Joining Date</label><br />
-                <input disabled onChange={formHandle} type='date'  
+
+                <div className='form-sub-card'>
+                  <label className='label'>Joining Date</label><br />
+                  <input disabled onChange={formHandle} type='date'
                     className='input-box' /><br />
-                <label className='label'>Student Name</label><br />
-                <input placeholder='Student Name' onChange={formHandle} required type='text' name='name'
-                  value={data.name} className='input-box' /><br />
-                <label className='label'>Enrollment Number</label><br />
-                <input onChange={formHandle} placeholder='Enrollment No' required name='studentId'
-                  value={data.studentId.trim()} type='text' className='input-box' /><br />
-                <label className='label'>Class</label><br />
-                <input onChange={formHandle} required name='Class'
-                  value={data.Class} type='text' placeholder='Enter Class' className='input-box' /><br />
-                  </div>
-                  <div className=''> 
-                <label className='label'>Address</label><br />
-                <input onChange={formHandle} name='address'
-                  value={data.address} required type='text' placeholder='Enter Address' className='input-box' /><br />
-                <label className='label'>Paid</label><br />
-                <input style={{ paddingLeft: "21px" }} onChange={formHandle} name='paid'
-                  value={data.paid} required type='number' placeholder='Enter Paid Fee' className='input-box' />
-                <span id="rupi1" className="material-symbols-outlined">
-                  currency_rupee
-                </span><br />
+                  <label className='label'>Student Name</label><br />
+                  <input placeholder='Student Name' onChange={formHandle} required type='text' name='name'
+                    value={data.name} className='input-box' /><br />
+                  <label className='label'>Enrollment Number</label><br />
+                  <input onChange={formHandle} placeholder='Enrollment No' required name='studentId'
+                    value={data.studentId.trim()} type='text' className='input-box' /><br />
+                  <label className='label'>Class</label><br />
+                  <input onChange={formHandle} required name='Class'
+                    value={data.Class} type='text' placeholder='Enter Class' className='input-box' /><br />
+                </div>
+                <div className=''>
+                  <label className='label'>Address</label><br />
+                  <input onChange={formHandle} name='address'
+                    value={data.address} required type='text' placeholder='Enter Address' className='input-box' /><br />
+                  <label className='label'>Paid</label><br />
+                  <input style={{ paddingLeft: "21px" }} onChange={formHandle} name='paid'
+                    value={data.paid} required type='number' placeholder='Enter Paid Fee' className='input-box' />
+                  <span id="rupi1" className="material-symbols-outlined">
+                    currency_rupee
+                  </span><br />
 
-                <label className='label'>Fee</label><br />
-                <input style={{ paddingLeft: "21px" }} onChange={formHandle} required name='totalAmount'
-                  value={data.totalAmount} type='number' placeholder='Enter Fee' className='input-box' />
-                <span id="rupi2" className="material-symbols-outlined">
-                  currency_rupee
-                </span>
-                <hr />
+                  <label className='label'>Fee</label><br />
+                  <input style={{ paddingLeft: "21px" }} onChange={formHandle} required name='totalAmount'
+                    value={data.totalAmount} type='number' placeholder='Enter Fee' className='input-box' />
+                  <span id="rupi2" className="material-symbols-outlined">
+                    currency_rupee
+                  </span>
+                  <hr />
 
 
 
-                {updateSpin ? <button className="btn btn-primary" type="button" disabled="">
-                  <span style={{ marginRight: "0.4rem" }}
-                    className="spinner-border spinner-border-sm"
-                    role="status"
-                    aria-hidden="true"
-                  />
-                  Updating...
-                </button>
-                  : <button type='submit' className='text-white btn bg-primary'>Update</button>}
-</div>
+                  {updateSpin ? <button className="btn btn-primary" type="button" disabled="">
+                    <span style={{ marginRight: "0.4rem" }}
+                      className="spinner-border spinner-border-sm"
+                      role="status"
+                      aria-hidden="true"
+                    />
+                    Updating...
+                  </button>
+                    : <button type='submit' className='text-white btn bg-primary'>Update</button>}
+                </div>
               </form>
             </div>}
 

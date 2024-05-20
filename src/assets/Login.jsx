@@ -3,32 +3,40 @@ import '../App.css'
 import { passwordContext } from '../App'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
-
+import { api } from "./api"
 
 const Login = () => {
 
     const [password, setPassword] = useState("")
     const [password1, setPassword1] = useContext(passwordContext)
+    const [spinner, setSpinner] = useState(false)
     const navigate = useNavigate();
 
 
     // password verification function  
     const formFunc = async (e) => {
         e.preventDefault()
+        setSpinner(true)
 
         try {
-            const response = await axios.post("https://students-server-884c.onrender.com/students/login", {password : password })
+            const response = await axios.get(`${api}`)
 
-            if (response.data.ok) {
+            if (response.data === password) {
+                setSpinner(false)
                 alert("Logged in Successfully")
-                const pass = "hello"
-                localStorage.setItem("password", pass)
-                setPassword1(pass)
+                localStorage.setItem("password", password)
+                setPassword1(password)
+                
+            } else {
+                setSpinner(false)
+                alert("Please Enter Valid password")
+
             }
         }
         catch (error) {
             console.log(error)
-            alert("Try Again You Have Entered Wrong Password")
+            setSpinner(false)
+            alert("Please Try Again Later server is Down")
         }
     }
 
@@ -44,15 +52,24 @@ const Login = () => {
 
 
     return (
-        <div className='container d-flex justify-content-center align-items-center' style={{ width: "100vw", height: "100vh" }}>
+        <div className='bg-dark  d-flex justify-content-center align-items-center ' style={{ width: "100vw", height: "100vh" }}>
             <div className=''>
                 <form className='login-card' onSubmit={formFunc}>
                     <h4>Log in </h4>
                     <hr className='mb-1' />
                     <label className='label'>Enter Password</label><br />
 
-                    <input value={password} name='password' onChange={(e) => setPassword(e.target.value)} type='password' placeholder='Enter Password' className='input-box' /><br />
-                    <button type='submit' className='mt-3 btn bg-primary text-white'>Log in</button>
+                    <input required value={password} name='password' onChange={(e) => setPassword(e.target.value)} type='password' placeholder='Enter Password' className='input-box' /><br />
+                    {spinner ? <button style={{ width: "5rem" }} className="mt-3 btn btn-primary" type="button" disabled="">
+                        <span
+                            className="spinner-border spinner-border-sm"
+                            role="status"
+                            aria-hidden="true"
+                        />
+                        <span className="visually-hidden">Loading...</span>
+                    </button>
+                        : <button type='submit' style={{ width: "5rem" }} className='mt-3 btn bg-primary text-white fw-bold'>Log in</button>
+                    }
                 </form>
             </div>
         </div>

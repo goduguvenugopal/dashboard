@@ -118,9 +118,13 @@ td {
 }
 
 .login-card {
-  box-shadow: 0 0 7px rgb(69, 67, 67);
+  box-shadow: 0 0 7px white;
   padding: 15px;
   border-radius: 10px;
+  color: white;
+  
+  
+
 }
 
 .students-card{
