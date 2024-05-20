@@ -3,7 +3,7 @@ import '../App.css'
 import axios from 'axios'
 import { passwordContext } from '../App'
 import { useNavigate } from 'react-router-dom'
-import { api1, api2, api3, api4 } from '../api'
+ 
 
 
 const Admin = () => {
@@ -38,7 +38,7 @@ const Admin = () => {
   const formFunc = async (id) => {
     setUpdateSpin(true)
     try {
-      await axios.put(` ${api1} / ${id}`, data)
+      await axios.put(`https://students-server-884c.onrender.com/students/update-all/${id}`, data)
       alert("Student Details Has Updated Successfully ")
       setUpdateSpin(false)
       setData({
@@ -64,7 +64,7 @@ const Admin = () => {
     event.preventDefault()
     setLoader(false)
     try {
-      const response = await axios.post(`${api2}`, { studentId: enrollNum })
+      const response = await axios.post("https://students-server-884c.onrender.com/students/find-student", { studentId: enrollNum })
       setStudent(response.data)
       setLoader(true)
       setToggle1(true)
@@ -84,7 +84,7 @@ const Admin = () => {
     if (confirm("Student Will be deleted Permanently, 'Are you Sure.' ")) {
       setDelSpinner(true)
       try {
-        await axios.delete(` ${api3}/${itemId}`)
+        await axios.delete(` https://students-server-884c.onrender.com/students/del-students/${itemId}`)
         alert("Student Has Deletd successfully")
         setStudent([])
         setToggle1(false)
@@ -105,7 +105,7 @@ const Admin = () => {
     e.preventDefault()
     setPaySpin(true)
     try {
-      await axios.put(`${api4}`, { studentId, pay })
+      await axios.put("https://students-server-884c.onrender.com/students/update-one", { studentId, pay })
       alert("Payment Has Done Successfully")
       setStudentId("")
       setpay("")
