@@ -17,7 +17,7 @@ const Login = () => {
         e.preventDefault()
 
         try {
-            const response = await axios.post("https://students-server-884c.onrender.com/students/login", { password })
+            const response = await axios.post("https://students-server-884c.onrender.com/students/login", {password : password })
 
             if (response.data.ok) {
                 alert("Logged in Successfully")
