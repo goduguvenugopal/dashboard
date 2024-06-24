@@ -3,12 +3,14 @@ import '../App.css'
 import axios from 'axios'
 import { passwordContext } from '../App'
 import { useNavigate } from 'react-router-dom'
- 
+
 
 const Students = () => {
   const [data, setData] = useState([])
-  const [password, setPassword] = useContext(passwordContext)
+  const [password] = useContext(passwordContext)
   const navigate = useNavigate();
+  const [totalPaid, setTotalPaid] = useState("")
+
 
   useEffect(() => {
 
@@ -17,7 +19,7 @@ const Students = () => {
     }
   }, [password])
 
-  
+
   //  get method of students 
   useEffect(() => {
 
@@ -30,24 +32,40 @@ const Students = () => {
         alert("Please Try Again: Server Is Not Responding");
       }
     };
-     
-      
-  
+
+
     fetchData();
+
+
+
+
   }, [])
 
+  useEffect(() => {
+    
 
+    const totalPaid = data.reduce((paid, num) => {
+      return paid + num.paid
+    }, 0)
+
+    setTotalPaid(totalPaid.toLocaleString('en-IN'))
+
+     
+  }, [data])
 
 
   return (
     <>
-      <div className=' students-card d-flex justify-content-evenly  flex-wrap mt-2 pt-3 pb-1'>
-        <h4 className='all-text'>All Students details</h4>
+      <div className=' students-card d-flex flex-column align-items-start mt-2 pt-3 pb-1'>
+        <h4 className='all-text '>All Students details</h4>
         <h4 className='all-text'>Total Students : <b style={{ textDecoration: "underline" }}>{data.length}</b>  </h4>
-      </div>
-      <div className='container mt-5 ' >
+           <h4 className='all-text'>Total Paid : <b style={{ textDecoration: "underline" }}>{totalPaid}</b>  </h4>
+         </div>
 
-        {data.length ? <div className='table-card' style={{ paddingTop: "5rem" }}>
+
+      <div className='container mt-5 '>
+
+        {data.length ? <div className='table-card' style={{ paddingTop: "10.5rem" }}>
           <table className="table">
             <thead>
               <tr className='bg-primary text-white'>
